@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff0c9">
+<title>For My Favourite Person ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Permanent+Marker&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --red: #e34b42;
+  --blue: #3679bd;
+  --yellow: #ffd34e;
+  --cream: #fff4d8;
+  --paper: #fffdf2;
+  --ink: #292c39;
+  --shadow: 5px 7px 0 rgba(42,43,51,.13);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Patrick Hand", cursive;
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(rgba(65,130,190,.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(65,130,190,.10) 1px, transparent 1px),
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,.8) 0 1px, transparent 2px);
+  background-size: 22px 22px, 22px 22px, 7px 7px;
+  overflow-x: hidden;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+.hidden { display: none !important; }
+
+.paper {
+  background-color: var(--paper);
+  background-image: radial-gradient(rgba(80,60,30,.07) .7px, transparent .8px);
+  background-size: 5px 5px;
+  box-shadow: var(--shadow);
+  border: 2px solid var(--ink);
+  position: relative;
+}
+
+.tape {
+  position: absolute;
+  width: 85px;
+  height: 25px;
+  background: rgba(255,211,78,.75);
+  border: 1px dashed rgba(90,70,20,.35);
+  z-index: 3;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
+}
+
+.hand { font-family: "Caveat", cursive; }
+.marker { font-family: "Permanent Marker", cursive; }
+
+button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
+}
+
+/* BIRTHDAY OPENING */
+
+#opening {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+#opening::before, #opening::after {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  opacity: .8;
+  z-index: 0;
+}
+
+#opening::before {
+  background: var(--red);
+  left: -85px;
+  top: 12%;
+}
+
+#opening::after {
+  background: var(--blue);
+  right: -90px;
+  bottom: 8%;
+}
+
+.opening-card {
+  max-width: 650px;
+  width: 100%;
+  padding: 55px 28px 45px;
+  text-align: center;
+  transform: rotate(-1deg);
+  z-index: 1;
+  background-color: #fffdf1;
+  background-image: linear-gradient(rgba(65,130,190,.12) 1px, transparent 1px);
+  background-size: 100% 27px;
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+.opening-card::before {
+  content: "A VERY IMPORTANT PRESENT";
+  position: absolute;
+  top: 17px;
+  left: 20px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--red);
+  transform: rotate(-4deg);
+}
+
+.opening-card h1 {
+  font-family: "Permanent Marker", cursive;
+  font-size: clamp(2.7rem,9vw,5.2rem);
+  line-height: 1.1;
+  color: var(--red);
+  text-shadow: 3px 3px 0 var(--yellow);
+  margin: 20px 0 15px;
+}
+
+.opening-card .subtitle {
+  font-family: "Caveat", cursive;
+  font-size: clamp(1.5rem,5vw,2.3rem);
+  color: var(--blue);
+  margin-bottom: 30px;
+}
+
+.opening-note {
+  font-size: 1.25rem;
+  max-width: 430px;
+  margin: 0 auto 30px;
+  line-height: 1.5;
+}
+
+.opening-doodle {
+  font-size: 2rem;
+  margin: 20px 0;
+  letter-spacing: 12px;
+}
+
+.primary-button {
+  border: 3px solid var(--ink);
+  background: var(--yellow);
+  color: var(--ink);
+  padding: 13px 28px;
+  font-family: "Permanent Marker", cursive;
+  font-size: 1.1rem;
+  box-shadow: 4px 5px 0 var(--ink);
+  transform: rotate(-1deg);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.primary-button:hover {
+  transform: translate(2px,2px) rotate(1deg);
+  box-shadow: 2px 3px 0 var(--ink);
+}
+
+.primary-button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+.small-note {
+  margin-top: 25px;
+  font-family: "Caveat", cursive;
+  font-size: 1.3rem;
+  color: #777;
+}
+
+/* PAPER TEAR: TWO FULL-SCREEN HALVES */
+
+#tear-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  overflow: hidden;
+  pointer-events: none;
+  background: transparent;
+}
+
+.tear-paper {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 51%;
+  background-color: #fff4d8;
+  background-image:
+    linear-gradient(rgba(65,130,190,.15) 1px, transparent 1px),
+    radial-gradient(rgba(80,60,30,.08) .7px, transparent .8px);
+  background-size: 100% 27px, 5px 5px;
+  border: none;
+  will-change: transform;
+}
+
+.tear-left {
+  left: 0;
+  clip-path: polygon(
+    0 0, 100% 0,
+    97% 8%, 100% 16%,
+    96% 24%, 100% 32%,
+    96% 40%, 100% 48%,
+    96% 56%, 100% 64%,
+    96% 72%, 100% 80%,
+    96% 88%, 100% 96%,
+    97% 100%, 0 100%
+  );
+}
+
+.tear-right {
+  right: 0;
+  clip-path: polygon(
+    0 0, 100% 0, 100% 100%,
+    0 100%, 3% 96%,
+    0 88%, 4% 80%,
+    0 72%, 4% 64%,
+    0 56%, 4% 48%,
+    0 40%, 4% 32%,
+    0 24%, 4% 16%,
+    0 8%
+  );
+}
+
+#tear-screen.playing .tear-left {
+  animation: paperLeft 1.9s cubic-bezier(.7,0,.2,1) forwards;
+}
+
+#tear-screen.playing .tear-right {
+  animation: paperRight 1.9s cubic-bezier(.7,0,.2,1) forwards;
+}
+
+@keyframes paperLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-105%); }
+}
+
+@keyframes paperRight {
+  from { transform: translateX(0); }
+  to { transform: translateX(105%); }
+}
+
+/* SCRAPBOOK */
+
+#scrapbook {
+  width: 100%;
+  min-height: 100vh;
+  padding: 35px 24px 70px;
+}
+
+.top-header {
+  width: 100%;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.top-header h1 {
+  font-family: "Permanent Marker", cursive;
+  color: var(--red);
+  font-size: clamp(2rem,7vw,3.8rem);
+  text-shadow: 2px 3px 0 var(--yellow);
+  margin-bottom: 5px;
+}
+
+.top-header p {
+  font-family: "Caveat", cursive;
+  font-size: 1.5rem;
+  color: var(--blue);
+}
+
+.progress-wrap {
+  width: min(540px,90%);
+  margin: 18px auto;
+  background: white;
+  border: 2px solid var(--ink);
+  padding: 5px;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.progress-bar {
+  height: 12px;
+  width: 0%;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--red), var(--red) 8px,
+    var(--yellow) 8px, var(--yellow) 16px
+  );
+  transition: width .4s;
+}
+
+.progress-label {
+  font-size: 1rem;
+  margin-top: 7px;
+}
+
+/* RESPONSIVE LETTER GRID */
+
+.letter-grid {
+  width: min(1450px, calc(100vw - 64px));
+  max-width: 1450px;
+  margin: 45px auto;
+  display: grid;
+  grid-template-columns: repeat(5,minmax(0,1fr));
+  gap: 25px;
+  align-items: stretch;
+}
+
+.letter-card {
+  width: 100%;
+  min-width: 0;
+  min-height: 220px;
+  padding: 25px 17px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 5px 0 rgba(0,0,0,.15);
+  transform: rotate(var(--rotation,-1deg));
+  transition: transform .2s, box-shadow .2s, opacity .2s;
+  position: relative;
+}
+
+.letter-card:nth-child(3n) { background: #fff0c1; }
+.letter-card:nth-child(3n + 1) { background: #e7f1ff; }
+.letter-card:nth-child(3n + 2) { background: #ffe5e1; }
+
+.letter-card .initial {
+  display: block;
+  flex-shrink: 0;
+  font-family: "Permanent Marker", cursive;
+  font-size: 4rem;
+  line-height: 1.1;
+  color: var(--red);
+  text-shadow: 2px 2px 0 var(--yellow);
+  margin-bottom: 15px;
+}
+
+.letter-card:nth-child(even) .initial { color: var(--blue); }
+
+.letter-card .card-title {
+  width: 100%;
+  max-width: 230px;
+  min-height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Caveat", cursive;
+  font-size: 1.55rem;
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: break-word;
+  margin: 0 auto 12px;
+}
+
+.letter-card .lock {
+  margin-top: auto;
+  font-size: 1.05rem;
+}
+
+.letter-card:hover:not(.locked) {
+  transform: translateY(-5px) rotate(0deg);
+  box-shadow: 7px 9px 0 rgba(0,0,0,.16);
+}
+
+.letter-card.locked {
+  opacity: .65;
+  cursor: not-allowed;
+}
+
+@media(max-width:1100px) {
+  .letter-grid {
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 20px;
+  }
+}
+
+@media(max-width:760px) {
+  #scrapbook { padding: 25px 16px 50px; }
+
+  .letter-grid {
+    width: calc(100vw - 40px);
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 17px;
+  }
+
+  .letter-card {
+    min-height: 190px;
+    padding: 20px 12px 15px;
+  }
+
+  .letter-card .initial { font-size: 3.4rem; }
+  .letter-card .card-title { font-size: 1.35rem; }
+}
+
+@media(max-width:520px) {
+  .letter-grid {
+    width: calc(100vw - 32px);
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 15px;
+  }
+
+  .letter-card {
+    min-height: 185px;
+    padding: 18px 10px;
+  }
+
+  .letter-card .initial { font-size: 3.1rem; }
+  .letter-card .card-title { font-size: 1.25rem; }
+}
+
+/* LETTER READER */
+
+#reader {
+  max-width: 820px;
+  margin: 30px auto;
+}
+
+.reader-paper {
+  padding: clamp(25px,6vw,55px);
+  transform: rotate(-.3deg);
+  background-color: #fffdf4;
+  background-image: linear-gradient(rgba(75,130,185,.13) 1px,transparent 1px);
+  background-size: 100% 32px;
+}
+
+.reader-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 25px;
+  font-family: "Caveat", cursive;
+  font-size: 1.25rem;
+}
+
+.reader-topline span:first-child { color: var(--red); }
+
+.letter-heading {
+  font-family: "Permanent Marker", cursive;
+  font-size: clamp(1.8rem,6vw,3rem);
+  color: var(--blue);
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.initial-cutout {
+  display: inline-flex;
+  width: 75px;
+  height: 75px;
+  background: var(--yellow);
+  border: 3px solid var(--ink);
+  align-items: center;
+  justify-content: center;
+  font-family: "Permanent Marker", cursive;
+  font-size: 3.5rem;
+  color: var(--red);
+  box-shadow: 4px 4px 0 var(--ink);
+  transform: rotate(-6deg);
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+.letter-body {
+  font-size: 1.28rem;
+  line-height: 1.75;
+}
+
+.letter-body p { margin: 0 0 22px; }
+
+.letter-signoff {
+  font-family: "Caveat", cursive;
+  font-size: 1.8rem;
+  color: var(--red);
+  margin-top: 25px;
+}
+
+.music-card {
+  margin: 35px 0 30px;
+  padding: 18px;
+  background: #e8f1ff;
+  border: 2px dashed var(--blue);
+  transform: rotate(.5deg);
+}
+
+.music-label {
+  font-family: "Permanent Marker", cursive;
+  font-size: .85rem;
+  color: var(--red);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.music-title {
+  font-family: "Caveat", cursive;
+  font-size: 1.65rem;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.spotify-frame {
+  width: 100%;
+  height: 152px;
+  border: 0;
+  border-radius: 12px;
+}
+
+.reader-actions {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.secondary-button {
+  background: var(--yellow);
+  border: 2px solid var(--ink);
+  padding: 10px 18px;
+  font-family: "Permanent Marker", cursive;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.secondary-button.blue { background: #b8d9ff; }
+.secondary-button.red { background: #ffb8b1; }
+
+/* QUESTION GATE */
+
+#question-gate {
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+.question-paper {
+  padding: 30px 25px;
+  background-color: #fff4cf;
+  background-image: radial-gradient(rgba(90,70,30,.08) .7px,transparent .8px);
+  background-size: 5px 5px;
+  transform: rotate(.5deg);
+}
+
+.question-paper h2 {
+  font-family: "Permanent Marker", cursive;
+  color: var(--red);
+  font-size: clamp(1.5rem,5vw,2.3rem);
+}
+
+.question-text {
+  font-family: "Caveat", cursive;
+  font-size: 1.8rem;
+  line-height: 1.25;
+  margin: 22px 0;
+}
+
+.answer-input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 2px solid var(--ink);
+  background: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.feedback {
+  min-height: 35px;
+  margin-top: 15px;
+  font-family: "Caveat", cursive;
+  font-size: 1.45rem;
+}
+
+.feedback.wrong { color: #c0392b; }
+.feedback.right { color: #337a46; }
+
+/* GALLERY */
+
+.gallery {
+  max-width: 950px;
+  margin: 60px auto;
+}
+
+.gallery h2 {
+  text-align: center;
+  font-family: "Permanent Marker", cursive;
+  color: var(--blue);
+  font-size: 2rem;
+}
+
+.photo-grid {
+  display: flex;
+  justify-content: center;
+  padding: 20px 12px;
+}
+
+.photo {
+  display: none;
+  width: min(100%, 520px);
+  background: white;
+  border: 2px solid var(--ink);
+  padding: 10px 10px 25px;
+  box-shadow: 4px 5px 0 rgba(0,0,0,.14);
+  transform: rotate(var(--rotation,2deg));
+  cursor: pointer;
+}
+
+.photo.active { display: block; }
+
+.slideshow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 12px auto 35px;
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem;
+}
+
+.slideshow-controls button {
+  min-width: 48px;
+  padding: 8px 14px;
+}
+
+.photo img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.photo p {
+  font-family: "Caveat", cursive;
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 10px 0 0;
+}
+
+/* FINAL PAGE */
+
+#final-page {
+  max-width: 760px;
+  margin: 45px auto;
+  padding: 45px 28px;
+  text-align: center;
+  transform: rotate(-.5deg);
+  background: #fffdf2;
+  background-image: linear-gradient(rgba(65,130,190,.12) 1px,transparent 1px);
+  background-size: 100% 30px;
+}
+
+#final-page h1 {
+  font-family: "Permanent Marker", cursive;
+  color: var(--red);
+  font-size: clamp(2.2rem,8vw,4.2rem);
+  text-shadow: 3px 3px 0 var(--yellow);
+}
+
+#final-page p {
+  font-size: 1.35rem;
+  line-height: 1.7;
+}
+
+.final-heart {
+  font-size: 4rem;
+  margin: 20px 0;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.13); }
+}
+
+/* LIGHTBOX */
+
+#lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(0,0,0,.86);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#lightbox img {
+  max-width: 95vw;
+  max-height: 85vh;
+  border: 8px solid white;
+  box-shadow: 0 0 30px black;
+}
+
+#lightbox button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: 2px solid black;
+  padding: 8px 15px;
+  font-size: 1.2rem;
+}
+
+.footer-note {
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-size: 1.3rem;
+  color: #666;
+  margin: 45px 0 15px;
+}
+
+@media(max-width:600px) {
+  .reader-paper { padding: 25px 19px; }
+
+  .reader-actions { flex-direction: column; }
+
+  .reader-actions button { width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BIRTHDAY OPENING -->
+
+<section id="opening">
+  <div class="opening-card paper">
+    <div class="tape"></div>
+    <div class="opening-doodle">★ ♥ ★</div>
+
+    <h1>HAPPY<br>BIRTHDAY!</h1>
+
+    <p class="subtitle">To my favourite human.</p>
+
+    <p class="opening-note">
+      I made you a little something. It has memories, music,
+      a few embarrassing details, and quite a lot of me being
+      hopelessly in love with you.
+    </p>
+
+    <button class="primary-button" id="open-present">
+      OPEN YOUR PRESENT ♥
+    </button>
+
+    <p class="small-note">
+      P.S. You have to earn your way through this one.
+    </p>
+  </div>
+</section>
+
+<!-- PAPER TEAR OVERLAY -->
+
+<div id="tear-screen" class="hidden" aria-hidden="true">
+  <div class="tear-paper tear-left"></div>
+  <div class="tear-paper tear-right"></div>
+</div>
+
+<!-- MAIN SCRAPBOOK -->
+
+<main id="scrapbook" class="hidden">
+
+  <header class="top-header">
+    <h1>21 little pieces of us</h1>
+    <p>A scrapbook of my favourite person.</p>
+
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <div class="progress-label" id="progress-label">
+      1 of 21 letters unlocked
+    </div>
+  </header>
+
+  <section class="letter-grid hidden" id="letter-grid"></section>
+
+  <section id="reader" class="hidden">
+    <div class="reader-paper paper">
+      <div class="tape"></div>
+
+      <div class="reader-topline">
+        <span id="letter-number"></span>
+        <span>Something from my heart ♥</span>
+      </div>
+
+      <h2 class="letter-heading">
+        <span class="initial-cutout" id="letter-initial"></span>
+        <span id="letter-title"></span>
+      </h2>
+
+      <div class="music-card">
+        <div class="music-label">A SONG FOR THIS LETTER</div>
+        <div class="music-title" id="music-title"></div>
+
+        <iframe
+          class="spotify-frame"
+          id="spotify-player"
+          title="Spotify music player"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <div class="letter-body" id="letter-body"></div>
+
+      <div class="letter-signoff">Always yours.</div>
+
+
+      <div class="reader-actions">
+        <button class="secondary-button blue" id="back-to-grid">
+          Back to scrapbook
+        </button>
+
+        <button class="secondary-button red" id="continue-button">
+          Continue ♥
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="question-gate" class="hidden">
+    <div class="question-paper paper">
+      <div class="tape"></div>
+
+      <h2>A LITTLE MEMORY TEST</h2>
+      <p class="question-text" id="question-text"></p>
+
+      <input
+        class="answer-input"
+        type="text"
+        id="answer-input"
+        placeholder="Type your answer here..."
+        autocomplete="off">
+
+      <button class="primary-button" id="submit-answer">
+        LOCK IT IN ♥
+      </button>
+
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="final-page" class="paper hidden">
+    <div class="tape"></div>
+
+    <h1>MY HEART IS YOURS.</h1>
+
+    <div class="final-heart">♥</div>
+
+    <p>
+      You made it through all 21 letters.
+      Twenty-one songs, twenty-one pieces of my heart,
+      and twenty-one questions about the little world we've built.
+    </p>
+
+    <p>
+      I wish I could put into words just how much you mean to me.
+      I could write another twenty-one letters, and I still
+      wouldn't be done telling you.
+    </p>
+
+    <p>
+      I don't know what every chapter ahead of us will look like.
+      I don't know what the future has planned, what cities
+      we'll visit, what silly arguments we'll have, or how many
+      more memories we'll collect.
+    </p>
+
+    <p>
+      But I know who I want beside me while we figure it all out.
+      I want you. I choose you. And I hope I get to keep choosing
+      you for a very, very long time.
+    </p>
+
+    <p>
+      Happy birthday, my love. Thank you for being you.
+      Thank you for finding your way back into my life.
+      And thank you for making it a much better place to be.
+    </p>
+
+    <p class="hand" style="font-size:2rem;color:var(--red)">
+      Here's to us, always.
+    </p>
+
+    <div class="final-heart">♥</div>
+
+    <p class="marker" style="color:var(--blue)">
+      MY HEART IS FOREVER YOURS.
+    </p>
+  </section>
+
+  <section class="gallery hidden" id="gallery">
+    <h2>A FEW OF MY FAVOURITE PICTURES</h2>
+
+    <div class="photo-grid">
+      <div class="photo" style="--rotation:-3deg">
+        <img src="assets/wallet-childhood.jpg" alt="A childhood memory">
+        <p>Before we even knew what was coming.</p>
+      </div>
+
+      <div class="photo" style="--rotation:2deg">
+        <img src="assets/school-days.jpg" alt="School days">
+        <p>Back when you were a menace.</p>
+      </div>
+
+      <div class="photo" style="--rotation:-2deg">
+        <img src="assets/silly-selfie.jpg" alt="A silly selfie">
+        <p>My favourite kind of chaos.</p>
+      </div>
+
+      <div class="photo" style="--rotation:3deg">
+        <img src="assets/first-kiss.jpg" alt="A special memory">
+        <p>One of my favourite chapters.</p>
+      </div>
+
+      <div class="photo" style="--rotation:-2deg">
+        <img src="assets/call-me-wife.jpg" alt="A special moment">
+        <p>Well, you know where this is going.</p>
+      </div>
+
+      <div class="photo" style="--rotation:2deg">
+        <img src="assets/together.jpg" alt="Together">
+        <p>Us. That's the whole caption.</p>
+      </div>
+
+      <div class="photo" style="--rotation:-3deg">
+        <img src="assets/close-up.jpg" alt="A favourite picture">
+        <p>My favourite face.</p>
+      </div>
+    </div>
+    <div class="slideshow-controls">
+      <button class="secondary-button blue" id="previous-photo" aria-label="Previous photo">←</button>
+      <span id="photo-counter">1 / 7</span>
+      <button class="secondary-button red" id="next-photo" aria-label="Next photo">→</button>
+    </div>
+  </section>
+
+
+  <p class="footer-note">
+    Made with an unreasonable amount of love.
+  </p>
+
+</main>
+
+<!-- PHOTO LIGHTBOX -->
+
+<div id="lightbox" class="hidden">
+  <button id="close-lightbox">CLOSE ✕</button>
+  <img id="lightbox-image" src="" alt="Expanded memory">
+</div>
+
+<script>
+
+/* =====================================================
+   21 LETTERS AND THEIR SONGS
+===================================================== */
+
+const letters = [
+{
+  initial:"M",
+  title:"To You, Before We Knew",
+  song:"Perfect",
+  track:"0tgVpDi06FyKpA1z0VMD4v",
+  body:`
+    <p>It's quite funny when I think about it. We knew each other when we were tiny little humans in Junior KG. At that age, we probably had absolutely no idea what life was going to turn into, let alone that we'd somehow find our way back to each other years later. We were just children, living our little school lives, making friends, getting into trouble and going about our days.</p>
+    <p>And now, somehow, I get to write you a birthday letter. I get to think about all the years that have passed, all the things that have changed, and the person you've become. There is something genuinely beautiful about knowing that a person was part of your story before either of you understood what a story even was.</p>
+    <p>I don't think our childhood selves would believe where we are today. If someone had told me that the little girl from school would one day become the person I wanted to spend my life with, I probably would have laughed. Life really does have its own sense of humour.</p>
+    <p>But I'm glad it brought us here. I'm glad that somewhere between being children and becoming adults, we got another chance to know each other properly. And I'm especially glad that I get to know the person you are today, not just the little girl I remember from school.</p>
+  `
+},
+{
+  initial:"Y",
+  title:"My Favourite Bully",
+  song:"Count on Me",
+  track:"7l1qvxWjxcKpB9PCtBuTbU",
+  body:`
+    <p>I genuinely cannot talk about our school days without bringing up the fact that you bullied me. You were an absolute menace. I don't know what I did to deserve it, but apparently I had signed up for years of being picked on by you. And the worst part is that I probably didn't even know how to defend myself properly.</p>
+    <p>There is something hilarious about looking back at that version of us. We were so young, so unaware, and completely oblivious to how much life would change. I never imagined that the girl who spent so much time giving me a hard time would eventually become someone whose happiness would matter so much to me.</p>
+    <p>I'm not saying you have stopped being a menace, by the way. Let's not get carried away. You still have your moments. But now I get to experience all the other sides of you too. The thoughtful side, the affectionate side, the side that remembers little things, and the side that makes even an ordinary day feel like something worth remembering.</p>
+    <p>So here's to my favourite bully. Thank you for giving me a childhood memory that I can laugh about now. And thank you for giving me so many more reasons to smile since we found each other again.</p>
+  `
+},
+{
+  initial:"H",
+  title:"When You Left",
+  song:"Nothing's Gonna Change My Love for You",
+  track:"0vB4Vd6PtkJSEnWsmqATnZ",
+  body:`
+    <p>When you left school, I don't think I fully understood why it affected me the way it did. I just knew that something felt different. Someone who had been part of the everyday routine was suddenly no longer there. It was strange how a person could become part of the background of your life without you realising how much their presence mattered.</p>
+    <p>It's not that we were inseparable or that we understood what we meant to each other. We were children. We didn't have the language for any of that. But I remember the emptiness of knowing that someone who had always been around was suddenly gone. And in a way, that little absence became one of the earliest chapters of our story.</p>
+    <p>Looking back, I find it fascinating that life gave us so much time apart before bringing us back together. We grew up separately, became different people, had experiences that the other knew nothing about, and eventually crossed paths again as almost entirely different versions of ourselves.</p>
+    <p>Maybe that was necessary. Maybe we needed those years to become people who could actually understand each other. Whatever the reason, I'm grateful that leaving school wasn't the end of our story. It was just a pause neither of us knew would eventually lead somewhere.</p>
+  `
+},
+{
+  initial:"E",
+  title:"The Universe Has a Funny Way of Working",
+  song:"Right Here Waiting",
+  track:"4LFwNJWoj74Yd71fIr1W8x",
+  body:`
+    <p>Hypercity. One random encounter. That's all it took for a chapter we had both forgotten about to suddenly start again. I still find it funny how ordinary the moment probably seemed at the time. We were just there, going about our lives, and then suddenly there you were.</p>
+    <p>There was no grand cinematic soundtrack playing in the background. No dramatic slow motion. No one telling us that this was going to matter. We simply started talking again. And somehow, those conversations became something I looked forward to. One interaction led to another, and before I knew it, you were becoming a familiar part of my days again.</p>
+    <p>I love that our story didn't begin with some perfectly planned moment. It began with coincidence, curiosity and two people who had no idea what they were getting themselves into. It feels very us, actually. A little unexpected, a little chaotic, and somehow exactly where we needed to be.</p>
+    <p>Sometimes I think about how easily that encounter could have gone differently. We could have walked past each other. We could have exchanged a quick hello and moved on. But we didn't. We spoke, we reconnected, and the rest slowly unfolded. I'm glad we did.</p>
+  `
+},
+{
+  initial:"A",
+  title:"Six Attempts Later",
+  song:"Everything I Do",
+  track:"1Eb90nmqTrxylKFhcUzW8P",
+  body:`
+    <p>Six attempts. SIX. I think that deserves some recognition, honestly. Most people would have taken the hint much earlier, but apparently I had decided that persistence was going to be my defining personality trait. I kept trying, kept hoping, and kept finding reasons to believe that maybe, just maybe, this could become something.</p>
+    <p>There were moments when I probably looked ridiculous. There were moments when I was probably overthinking every interaction, analysing every conversation and wondering whether I was making progress or simply embarrassing myself. But I kept showing up because something about you made me want to try again.</p>
+    <p>And I don't say that because I think love is about refusing to take no for an answer. It isn't. I say it because looking back, I can see just how much I wanted the possibility of us. I wanted to know what it would be like to have you in my life in a way that was different from before.</p>
+    <p>Eventually, we got there. Not because everything was perfect, not because we had all the answers, but because we both chose to give this a chance. And if I could go back and tell that version of myself anything, it would be that the journey was going to be worth it.</p>
+  `
+},
+{
+  initial:"R",
+  title:"The Beginning of Us",
+  song:"It Must Have Been Love",
+  track:"6kvoHl80mfCVTv7XnZkjQn",
+  body:`
+    <p>There is something special about the beginning of a relationship. Everything feels new, every little interaction becomes something to look forward to, and even the most ordinary things suddenly feel exciting because you get to experience them with someone you like.</p>
+    <p>Our beginning wasn't a perfectly scripted love story. It was us figuring things out, learning how to communicate, understanding what the other person needed and slowly becoming comfortable with the idea that we were building something together. There was excitement, uncertainty, nervousness and a whole lot of emotion.</p>
+    <p>I remember how much I wanted things to work. I wanted to make you happy. I wanted to understand you. I wanted to be someone you could rely on, someone you could tell things to, someone who made you feel safe. I didn't always get everything right, and I know that I still have plenty to learn.</p>
+    <p>But the beginning gave us something worth protecting. It gave us a chance to create memories that would become ours alone. It gave us little traditions, inside jokes, conversations and moments that I now look back on with so much affection.</p>
+  `
+},
+{
+  initial:"T",
+  title:"Our Little Inorbit Tradition",
+  song:"I Will Always Love You",
+  track:"4eHbdreAnSOrDDsFfc4Fpm",
+  body:`
+    <p>Inorbit has become such a familiar part of our story that I don't think I can look at the place without thinking about you. It is funny how a shopping mall can become something more than just a place. It becomes a meeting point, a familiar setting, a place where little memories keep collecting.</p>
+    <p>One of the memories I always come back to is 9 January, when I came to pick you up after you returned from Vadodara. We had just started figuring things out, and there was something so exciting about getting to see you again. We went to Inorbit, and what might have seemed like an ordinary outing became part of our little history.</p>
+    <p>It's not really about the mall itself. It's about the person I get to meet there. It's about the conversations, the time spent together, the little things we do, and the comfort of knowing that I get to see you. Sometimes the best memories are made in the most ordinary places.</p>
+    <p>I hope we keep finding ourselves there, or somewhere else, making new memories. I hope that years from now we can look back at all these little outings and laugh about how much of our relationship was built around finding time to see each other.</p>
+  `
+},
+{
+  initial:"I",
+  title:"20 September 2024",
+  song:"My Heart Will Go On",
+  track:"33LC84JgLvK2KuW43MfaNq",
+  body:`
+    <p>20 September 2024. I don't think I'll ever forget that date. There are certain moments in life when something becomes very clear, even if you don't know exactly how everything will work out. That was one of those moments for me. I remember deciding, come hell what may, that I wanted you to be my wife.</p>
+    <p>It wasn't a decision made because I thought life would always be easy. It wasn't because I believed we'd never disagree, never misunderstand each other or never have difficult days. It was because, even with all the uncertainty that comes with loving another person, I could imagine a future with you and genuinely wanted to work towards it.</p>
+    <p>That day means so much to me because it represents the moment my feelings became a choice I was willing to stand by. I wanted to build something with you. I wanted to grow alongside you. I wanted to be there for the ordinary days, the exciting days, the difficult days and everything in between.</p>
+    <p>And then there was The Burrow Cafe. A place that will forever have a little extra meaning because of what that day represented. I don't know whether you realise just how much that date means to me, but I hope this letter gives you an idea.</p>
+  `
+},
+{
+  initial:"S",
+  title:"28 December 2024",
+  song:"I Want It That Way",
+  track:"47BBI51FKFwOMlIiX6m8ya",
+  body:`
+    <p>And then came 28 December 2024. The day you said yes. I wish I could somehow preserve exactly how that moment felt, because there are some feelings that are difficult to recreate with words. I remember the happiness, the relief, the excitement and the overwhelming feeling that something I had hoped for was finally becoming real.</p>
+    <p>It wasn't just about getting into a relationship. It was about the possibility of building something meaningful with someone I had known in one form or another for so much of my life. It was about getting to know you in a completely different way and discovering all the little things that make you who you are.</p>
+    <p>That date became another landmark in our story. It reminds me that all those conversations, all those attempts, all those moments of uncertainty eventually led to us choosing each other. And I never want to take that for granted.</p>
+    <p>I hope we always remember what it felt like to begin. Not because we need to stay exactly the same people we were then, but because I want us to keep that sense of excitement and appreciation for the fact that we get to do life together.</p>
+  `
+},
+{
+  initial:"F",
+  title:"Final Destination: Us",
+  song:"Show Me the Meaning",
+  track:"3BsaRV5QIulYz2lV9WWa8T",
+  body:`
+    <p>We went to watch Final Destination Bloodlines. We were supposed to be watching a film, following the story and paying attention to what was happening on the screen. But apparently we had other plans. Somewhere along the way, we became a little more interested in each other than in the actual movie.</p>
+    <p>It's one of those memories that makes me laugh because it is so completely us. The theatre, the film, the atmosphere, and then the two of us being distracted. I don't think the people who made the movie intended for that to be someone's takeaway, but here we are.</p>
+    <p>What I love about memories like this is that they don't have to be grand or especially meaningful to anyone else. They become special because they belong to us. They become little stories that we can bring up later, laugh about and remember in our own way.</p>
+    <p>And honestly, I hope we keep collecting these ridiculous little moments. The ones that make no sense to anyone else, the ones that make us laugh at the most random times, and the ones that remind us that being together can be fun even when we're doing absolutely nothing extraordinary.</p>
+  `
+},
+{
+  initial:"O",
+  title:"The Unmuted Incident",
+  song:"Larger Than Life",
+  track:"6sbXGUn9V9ZaLwLdOfpKRE",
+  body:`
+    <p>I cannot believe I have to immortalise this incident in a birthday scrapbook, but some memories are simply too important to leave undocumented. You thought you were on mute. You were speaking as though you were on mute. You were behaving as though the entire world could not hear you. Except I could hear you.</p>
+    <p>And what did I hear? Your fan. Just your fan rotating in the background. It was such a specific, ordinary sound, and somehow that made the whole thing even funnier. I remember the absurdity of the situation and how difficult it was not to react.</p>
+    <p>These are the little things I love about us. The random calls, the accidental background noises, the moments where one of us does something completely unintentional and the other gets a memory out of it. We don't need every interaction to be special. Sometimes the funniest memories are born from absolutely nothing.</p>
+    <p>So yes, this incident has officially made it into the scrapbook. I hope you are proud of yourself. Your fan has achieved immortality.</p>
+  `
+},
+{
+  initial:"R",
+  title:"You and Your Random Memories",
+  song:"Everybody",
+  track:"1di1BEgJYzPvXUuinsYJGP",
+  body:`
+    <p>One thing I absolutely love about you is how you randomly start talking about things we've done in the past. We'll be having a completely normal conversation and suddenly you'll bring up some little memory from months ago. Sometimes I don't even know where the thought came from, but I love that you remembered it.</p>
+    <p>It makes me realise that while I might be thinking about the present, you are sometimes carrying these little moments around with you. A random outing, something we said, a silly interaction, a particular day or something that happened in passing. You bring it up, and suddenly we're both back there again.</p>
+    <p>It makes me happy because it tells me that our memories aren't just things that happened and disappeared. They're things we get to revisit. They become part of the language we share, the little references that make sense to us and the stories that keep growing as we spend more time together.</p>
+    <p>I hope you never stop doing it. Keep bringing up the random memories. Keep reminding me of the things we've done. Keep surprising me with the details you've held onto. I want to have so many more memories that we won't know which ones to bring up first.</p>
+  `
+},
+{
+  initial:"E",
+  title:"The Tears You Try to Hide",
+  song:"As Long As You Love Me",
+  track:"3UpS7kBnkVQYG13pDDFTC4",
+  body:`
+    <p>I know you try very hard not to cry. I know that sometimes you hold it in, try to compose yourself, and convince yourself that you're going to be okay. And then the tears arrive anyway. There is something about that side of you that makes me want to be gentler with you, not because I think you're fragile, but because I know how much you sometimes carry inside.</p>
+    <p>I hope you know that you never have to pretend to be okay around me. You don't have to find the perfect words, explain every emotion or make yourself seem stronger than you feel. I want to know the happy version of you, the excited version, the silly version, but I also want to be there when things are difficult.</p>
+    <p>You are allowed to cry. You are allowed to have bad days. You are allowed to feel overwhelmed. None of those things make you any less wonderful, and none of them make me think any less of you. If anything, I hope you feel comfortable enough with me to let yourself be human.</p>
+    <p>I can't promise that I will always know exactly what to say. Sometimes I might get it wrong. But I can promise that I want to understand, that I want to listen, and that I want you to feel like you don't have to face everything alone.</p>
+  `
+},
+{
+  initial:"V",
+  title:"The Way You Understand Me",
+  song:"Quit Playing Games",
+  track:"0Uqs7ilt5kGX9NzFDWTBrP",
+  body:`
+    <p>One of the things I value most about you is your ability to look beyond the immediate disagreement and try to understand what I'm actually trying to say. I know that isn't always easy. It means putting aside your own frustration for a moment and trying to understand where the other person is coming from.</p>
+    <p>I've noticed the effort you make to understand my intentions, even when the way I've communicated them hasn't been perfect. That means a lot to me. It makes me feel like I'm being heard as a person, not just judged by one sentence or one reaction. It reminds me that we're on the same side, even when we disagree.</p>
+    <p>I also know that understanding has to work both ways. I need to keep learning how to listen to you properly, how to recognise what you're feeling and how to make space for your perspective. I don't want you to feel like you're always the one who has to be patient or make the effort.</p>
+    <p>Thank you for trying. Thank you for being willing to understand me. I notice it, I appreciate it, and I hope I can continue becoming someone who gives you that same feeling of being understood.</p>
+  `
+},
+{
+  initial:"E",
+  title:"The First Time We Had to Find Our Way Back",
+  song:"Every Breath You Take",
+  track:"1JSTJqkT5qHq8MDJnJbRE1",
+  body:`
+    <p>Our first breakup wasn't easy. It brought a lot of feelings, a lot of reflection and a lot of things that we probably didn't know how to process at the time. But looking back, I can see that it also forced us to think differently about what it means to understand another person.</p>
+    <p>We had to learn that our own perspective isn't always the only perspective. We had to look at situations from the other's point of view, think about how our words and actions affect each other, and recognise that two people can experience the same situation very differently.</p>
+    <p>I don't want to romanticise the difficult parts or pretend that everything happened for a reason. What I do appreciate is the growth that came from reflecting on what happened. We learned things about ourselves, about each other and about the kind of relationship we wanted to build.</p>
+    <p>I hope we keep carrying those lessons forward. Not as a reminder of something painful, but as proof that we can learn, mature and make better choices. I want us to keep choosing understanding over assumptions, communication over silence and each other over the need to win an argument.</p>
+  `
+},
+{
+  initial:"R",
+  title:"Learning to See Through Your Eyes",
+  song:"Summer of '69",
+  track:"0GONea6G2XdnHWjNZd6zt3",
+  body:`
+    <p>There are so many things about your life that I am still learning. Your experiences, your routines, your ambitions, the things that excite you and the things that worry you. I want to understand all of it, because I don't want to know only the parts of your life that involve me.</p>
+    <p>I want to understand the world you move through every day. I want to know what your days in Vadodara are like, what studying at K.J. Somaiya means to you, what you look forward to when you come home, and what makes you feel like yourself. I want to be interested in the things that matter to you because they matter to you.</p>
+    <p>Sometimes loving someone means recognising that they have an entire world of experiences that you weren't present for. I don't want to assume that I understand everything. I'd rather ask, listen and keep discovering who you are.</p>
+    <p>And I hope you do the same with me. I hope we keep making room for each other's individuality while building something together. I want a relationship where we don't have to become the same person to feel close. We can be ourselves and still choose to walk in the same direction.</p>
+  `
+},
+{
+  initial:"Y",
+  title:"The Woman You're Becoming",
+  song:"You Sang to Me",
+  track:"2dwhMQsFeHr2S787WxqAqW",
+  body:`
+    <p>I am genuinely proud of the woman you are becoming. I know that growing up isn't always a straightforward process. There are decisions to make, expectations to navigate, difficult days to get through and moments when you probably wonder whether you're doing enough. But I hope you recognise just how much you are growing.</p>
+    <p>I see your effort. I see the way you think about things, the way you try to understand people, the way you navigate your responsibilities and the way you continue becoming more confident in who you are. I know you might not always notice the progress yourself, but that doesn't mean it isn't happening.</p>
+    <p>I don't expect you to have everything figured out. I don't expect you to become some perfect version of yourself. I want you to keep discovering what makes you happy, what you believe in, what you want from life and the kind of person you want to be. I want you to feel free to grow without feeling like you have to meet someone else's idea of who you should be.</p>
+    <p>And while you do all of that, I hope I get to stand beside you, cheer you on, celebrate your wins and remind you of your worth on the days you forget it. I am proud of you, and I hope you never doubt that.</p>
+  `
+},
+{
+  initial:"O",
+  title:"The Things You Don't See",
+  song:"Hero",
+  track:"1PAgmT6YqGhd6zT9kN9gIo",
+  body:`
+    <p>Sometimes I wonder whether you realise how understanding you are. I know you have your own feelings, your own frustrations and your own expectations. I know there are moments when you could easily choose to focus only on what upset you, but instead you try to understand where I'm coming from.</p>
+    <p>I don't want that effort to go unnoticed. I don't want you to think that because I don't always say it, I don't appreciate it. I do. I notice the moments when you pause, when you listen, when you try to understand my intentions and when you make an effort to see the bigger picture.</p>
+    <p>But I also want you to remember that you deserve the same patience. You deserve to be understood without having to explain yourself a hundred times. You deserve to feel heard, respected and valued. I don't want your kindness to become something you feel obligated to give at the expense of your own feelings.</p>
+    <p>You are allowed to have boundaries. You are allowed to disagree. You are allowed to tell me when I've hurt you. I want us to create a space where both of us can be honest without being afraid that honesty will push the other person away.</p>
+  `
+},
+{
+  initial:"U",
+  title:"My Favourite Person to Make Memories With",
+  song:"Love Me for a Reason",
+  track:"2GBoo6ufWtMy1s6lqgbjJ8",
+  body:`
+    <p>If there is one thing I want more of, it is time with you. It doesn't always have to be an elaborate plan or some extraordinary outing. Sometimes I just want to see you, talk to you, sit beside you, make you laugh and spend time doing absolutely nothing important.</p>
+    <p>I want more mall outings, more random conversations, more silly pictures, more theatre memories, more food stops, more moments where we lose track of time and more experiences that become stories we bring up months later. I want the ordinary parts just as much as the exciting ones.</p>
+    <p>There is a comfort in having someone whose company you genuinely enjoy. Someone you can be ridiculous around. Someone you can tell the most random thing to. Someone who makes an ordinary day feel a little less ordinary. That's what you have become for me.</p>
+    <p>And I hope we never stop making memories just because we've been together for longer. I hope we keep finding new places, trying new things, revisiting old favourites and discovering new reasons to laugh. I want a lifetime of little moments with you, not just a collection of big milestones.</p>
+  `
+},
+{
+  initial:"R",
+  title:"If I Had to Start All Over Again",
+  song:"Words",
+  track:"2dNjHVd9urrtILcZBK70r1",
+  body:`
+    <p>If I had to go back and live our story again, knowing everything I know now, I would still want to find you. I would still want to have those conversations, make those memories, go through the awkward beginnings and experience all the little moments that eventually brought us here.</p>
+    <p>Of course, there are things I would do differently. There are moments where I could have communicated better, listened more carefully or understood what you needed sooner. I'm not pretending that I have been perfect. I know I haven't. But I also know that I want to keep learning how to love you better.</p>
+    <p>I don't want us to measure our relationship by whether we never make mistakes. I want us to measure it by how we respond to them, how we grow from them and how willing we are to keep understanding each other. I want to be someone who makes your life better, not someone who makes you feel like you have to constantly explain why your feelings matter.</p>
+    <p>So yes, if I had to start again, I'd still choose the chance of us. I'd still take the risk of getting to know you all over again. And I'd still hope that one day I would get to write something like this for you.</p>
+  `
+},
+{
+  initial:"S",
+  title:"To My Wife, Someday",
+  song:"Have You Ever Really Loved a Woman?",
+  track:"32Gf5A7Hr8RdgggXG0Fdks",
+  body:`
+    <p>I know we still have so much life ahead of us. We have things to figure out, places to go, goals to achieve and countless experiences waiting for us. I don't know exactly what the future will look like, and I don't want to pretend that I do. But there is one thing I know I want: I want to keep building a future with you.</p>
+    <p>When I think about the word wife, I don't just think about a title or a milestone. I think about a person I want to come home to. Someone I want to share ordinary mornings with, someone I want to celebrate the smallest victories with, someone I want beside me when life becomes difficult. I think about friendship, partnership, patience, laughter and a love that continues to grow.</p>
+    <p>I want to know every version of you that life brings out. The ambitious version, the tired version, the excited version, the uncertain version, the version that laughs at the most ridiculous things and the version that needs a little extra reassurance. I want to keep learning how to love each of those versions properly.</p>
+    <p>And if life gives me the privilege of calling you my wife someday, I hope I never forget what it felt like to be the person who was once trying six times to get a chance with you. I hope I never take for granted the fact that you chose me too.</p>
+    <p>Until then, I want to keep showing up. Keep growing. Keep learning. Keep making memories. Keep choosing you.</p>
+    <p>Happy birthday, my love. I hope this is just one of many birthdays I get to celebrate with you.</p>
+  `
+}
+];
+
+/* =====================================================
+   21 QUESTIONS, EACH BEFORE ITS LETTER
+===================================================== */
+
+const questions = [
+  { q:"Where did we first know each other from, when we were little?", answers:["school","jr kg","junior kg","school jr kg"] },
+  { q:"Until which standard did you spend your time bullying me?", answers:["5th","fifth","standard 5","class 5"] },
+  { q:"What happened that left me feeling a little empty when we were growing up?", answers:["i left school"] },
+  { q:"Where did we unexpectedly bump into each other again?", answers:["hypercity","hyper city"] },
+  { q:"How many times did I try to get with you before things finally worked out?", answers:["6","six","six times","6 times"] },
+  { q:"When we first started, what did I want to be for you?", answers:["someone you could rely on","someone to rely on","someone you could depend on"] },
+  { q:"Where did we go on 9 January after I picked you up when you returned from Vadodara, the place that became our little tradition?", answers:["inorbit","inorbit mall"] },
+  { q:"Where did we go on 20 September 2024, the day I decided I wanted you to be my wife?", answers:["the burrow cafe","burrow cafe","the burrow"] },
+  { q:"On what date did you finally say yes?", answers:["28th dec","28 dec","28th december","28 december","december 28","28th december 2024"] },
+  { q:"Which movie were we watching when we got a little distracted from the actual movie?", answers:["final destination bloodlines"] },
+  { q:"What could I hear in the background when you thought you were on mute?", answers:["my fan"] },
+  { q:"What do you randomly start talking about when we're together?", answers:["random little memories","little memories","random memories"] },
+  { q:"What's something you try very hard to hold back, but eventually cannot?", answers:["crying","tears","to cry"] },
+  { q:"What's one thing you do during disagreements that makes me feel understood?", answers:["understand my intentions","understanding my intentions","my intentions"] },
+  { q:"What did our first breakup teach us to do better when it came to understanding each other?", answers:["to look at things from the others perspective","look at things from the others perspective","look at things from the other perspective","to see things from the others perspective","others perspective","other's perspective"] },
+  { q:"Where do you study?", answers:["k j somaiya","kj somaiya","k.j. somaiya","somaiya"] },
+  { q:"What am I proud of you for becoming?", answers:["the woman youre becoming","the woman you are becoming","the woman youre growing into","the woman you are growing into"] },
+  { q:"What's one thing I have always wanted you to know about how I see you?", answers:["how understanding you are","understanding"] },
+  { q:"What's the one thing I would choose to do with you, over and over again?", answers:["kiss you","kissing you","to kiss you"] },
+  { q:"If I had to start our story all over again, who would I choose?", answers:["you","you again"] },
+  { q:"What do I hope to call you someday, apart from your name?", answers:["wifey legally","wifey","legally wifey"] }
+];
+
+/* =====================================================
+   STATE AND PROGRESS
+===================================================== */
+
+const STORAGE_KEY = "birthday_scrapbook_progress_v4";
+
+let currentLetter = 0;
+let unlockedLetters = 0;
+let currentQuestion = 0;
+let questionPassed = false;
+let openingInProgress = false;
+
+function loadProgress() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
+    if (saved) {
+      unlockedLetters = Math.max(
+        0,
+        Math.min(21, saved.unlockedLetters || 0)
+      );
+    }
+  } catch (error) {
+    console.warn("Could not load progress.", error);
+  }
+}
+
+function saveProgress() {
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify({unlockedLetters})
+  );
+}
+
+function updateProgress() {
+  const completed = unlockedLetters;
+  const percentage = (completed / 21) * 100;
+
+  document.getElementById("progress-bar").style.width =
+    percentage + "%";
+
+  document.getElementById("progress-label").textContent =
+    completed + " of 21 letters unlocked";
+}
+
+/* =====================================================
+   CORRECTED OPENING SEQUENCE
+===================================================== */
+
+function startOpening() {
+  if (openingInProgress) return;
+
+  openingInProgress = true;
+
+  const button = document.getElementById("open-present");
+  const opening = document.getElementById("opening");
+  const tear = document.getElementById("tear-screen");
+  const scrapbook = document.getElementById("scrapbook");
+
+  button.disabled = true;
+  button.textContent = "OPENING YOUR PRESENT...";
+
+  // Fade out the birthday card first.
+  opening.style.transition = "opacity 300ms ease";
+  opening.style.opacity = "0";
+
+  setTimeout(() => {
+
+    // Remove the birthday screen completely.
+    opening.classList.add("hidden");
+
+    // Prepare the paper overlay.
+    tear.classList.remove("hidden");
+    tear.classList.remove("playing");
+
+    // Force browser reflow so animation starts reliably.
+    void tear.offsetWidth;
+
+    // Start the two halves moving apart.
+    tear.classList.add("playing");
+
+    // Wait for the animation to finish.
+    setTimeout(() => {
+
+      // Remove the overlay completely.
+      tear.classList.remove("playing");
+      tear.classList.add("hidden");
+
+      // Reveal the scrapbook.
+      scrapbook.classList.remove("hidden");
+
+      // The first memory question comes before Letter 1.
+      renderGrid();
+      showQuestion(0);
+
+      openingInProgress = false;
+
+    }, 1950);
+
+  }, 300);
+}
+
+document.getElementById("open-present").addEventListener(
+  "click",
+  startOpening
+);
+
+/* =====================================================
+   SCRAPBOOK GRID
+===================================================== */
+
+function renderGrid() {
+  const grid = document.getElementById("letter-grid");
+  grid.innerHTML = "";
+
+  letters.forEach((letter,index) => {
+    const card = document.createElement("div");
+
+    card.className = "letter-card";
+    card.style.setProperty(
+      "--rotation",
+      ((index % 5) - 2) * .7 + "deg"
+    );
+
+    const locked = index >= unlockedLetters;
+
+    if (locked) card.classList.add("locked");
+
+    const initial = document.createElement("span");
+    initial.className = "initial";
+    initial.textContent = letter.initial;
+
+    const title = document.createElement("span");
+    title.className = "card-title";
+    title.textContent = letter.title;
+
+    const lock = document.createElement("div");
+    lock.className = "lock";
+    lock.textContent = locked ? "🔒 Locked" : "♥ Open";
+
+    card.append(initial,title,lock);
+
+    if (!locked) {
+      card.addEventListener("click",() => showReader(index));
+    }
+
+    grid.appendChild(card);
+  });
+
+  updateProgress();
+}
+
+/* =====================================================
+   VIEW MANAGEMENT
+===================================================== */
+
+function hideMainSections() {
+  document.getElementById("reader").classList.add("hidden");
+  document.getElementById("question-gate").classList.add("hidden");
+  document.getElementById("letter-grid").classList.add("hidden");
+  document.getElementById("gallery").classList.add("hidden");
+  document.getElementById("final-page").classList.add("hidden");
+}
+
+function showGrid() {
+  hideMainSections();
+
+  document.getElementById("letter-grid").classList.remove("hidden");
+
+  document.getElementById("letter-grid").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+/* =====================================================
+   LETTER READER
+===================================================== */
+
+function showReader(index) {
+  if (index < 0 || index >= unlockedLetters) return;
+
+  currentLetter = index;
+  questionPassed = false;
+
+  hideMainSections();
+
+  document.getElementById("reader").classList.remove("hidden");
+
+  const letter = letters[index];
+
+  document.getElementById("letter-number").textContent =
+    "LETTER " + (index + 1) + " OF 21";
+
+  document.getElementById("letter-initial").textContent =
+    letter.initial;
+
+  document.getElementById("letter-title").textContent =
+    letter.title;
+
+  // Render the original letter body without stripping its paragraphs.
+  document.getElementById("letter-body").innerHTML =
+    letter.body;
+
+  document.getElementById("music-title").textContent =
+    letter.song;
+
+  document.getElementById("spotify-player").src =
+    "https://open.spotify.com/embed/track/" +
+    letter.track +
+    "?utm_source=generator&theme=0";
+
+  document.getElementById("continue-button").textContent =
+    index === 20 ? "Finish our story ♥" : "Next memory ♥";
+
+  document.getElementById("reader").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+document.getElementById("back-to-grid").addEventListener(
+  "click",
+  showGrid
+);
+
+/* =====================================================
+   QUESTION FLOW
+===================================================== */
+
+function showQuestion(index) {
+  hideMainSections();
+
+  document.getElementById("question-gate").classList.remove("hidden");
+
+  currentQuestion = index;
+
+  document.getElementById("question-text").textContent =
+    questions[index].q;
+
+  document.getElementById("answer-input").value = "";
+
+  const feedback = document.getElementById("feedback");
+  feedback.textContent = "";
+  feedback.className = "feedback";
+
+  document.getElementById("submit-answer").disabled = false;
+
+  questionPassed = false;
+
+  document.getElementById("question-gate").scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
+
+  setTimeout(() => {
+    document.getElementById("answer-input").focus();
+  },300);
+}
+
+document.getElementById("continue-button").addEventListener(
+  "click",
+  () => {
+    if (currentLetter === 20) {
+      showFinalPage();
+      return;
+    }
+
+    // Ask the next letter's question before revealing that letter.
+    showQuestion(currentLetter + 1);
+  }
+);
+
+function normaliseAnswer(value) {
+  return value
+    .toLowerCase()
+    .trim()
+    .replace(/[’']/g,"")
+    .replace(/[.,!?]/g,"")
+    .replace(/\s+/g," ");
+}
+
+function checkAnswer() {
+  if (questionPassed) return;
+
+  const input = document.getElementById("answer-input");
+  const feedback = document.getElementById("feedback");
+
+  const userAnswer = normaliseAnswer(input.value);
+
+  if (!userAnswer) {
+    feedback.textContent =
+      "Come on, you have to give me an answer! ♥";
+    feedback.className = "feedback wrong";
+    return;
+  }
+
+  const acceptedAnswers = questions[currentQuestion].answers
+    .map(normaliseAnswer);
+
+  const correct = acceptedAnswers.includes(userAnswer);
+
+  if (correct) {
+    questionPassed = true;
+
+    feedback.textContent =
+      "THAT'S RIGHT! You remember us. ♥";
+
+    feedback.className = "feedback right";
+
+    document.getElementById("submit-answer").disabled = true;
+
+    setTimeout(unlockCurrentLetter,1100);
+
+  } else {
+    feedback.textContent =
+      "Hmm, not quite! Think about it again, my love. ♥";
+
+    feedback.className = "feedback wrong";
+  }
+}
+
+document.getElementById("submit-answer").addEventListener(
+  "click",
+  checkAnswer
+);
+
+document.getElementById("answer-input").addEventListener(
+  "keydown",
+  event => {
+    if (event.key === "Enter") checkAnswer();
+  }
+);
+
+function unlockCurrentLetter() {
+  // Question N unlocks Letter N. No letter is shown before its question.
+  unlockedLetters = Math.max(unlockedLetters, currentQuestion + 1);
+
+  saveProgress();
+  renderGrid();
+
+  showReader(currentQuestion);
+}
+
+/* =====================================================
+   FINAL PAGE
+===================================================== */
+
+function showFinalPage() {
+  hideMainSections();
+
+  document.getElementById("final-page").classList.remove("hidden");
+  document.getElementById("gallery").classList.remove("hidden");
+  showPhoto(0);
+
+  document.getElementById("final-page").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify({
+      unlockedLetters:21,
+      completed:true
+    })
+  );
+}
+
+/* =====================================================
+   PHOTO SLIDESHOW
+===================================================== */
+
+let currentPhoto = 0;
+const photos = Array.from(document.querySelectorAll(".photo"));
+
+function showPhoto(index) {
+  if (!photos.length) return;
+  currentPhoto = (index + photos.length) % photos.length;
+  photos.forEach((photo, i) => photo.classList.toggle("active", i === currentPhoto));
+  document.getElementById("photo-counter").textContent =
+    (currentPhoto + 1) + " / " + photos.length;
+}
+
+document.getElementById("previous-photo").addEventListener("click", () => showPhoto(currentPhoto - 1));
+document.getElementById("next-photo").addEventListener("click", () => showPhoto(currentPhoto + 1));
+
+/* =====================================================
+   PHOTO LIGHTBOX
+===================================================== */
+
+document.querySelectorAll(".photo img").forEach(img => {
+  img.addEventListener("click",() => {
+    document.getElementById("lightbox-image").src = img.src;
+    document.getElementById("lightbox").classList.remove("hidden");
+  });
+});
+
+function closeLightbox() {
+  document.getElementById("lightbox").classList.add("hidden");
+}
+
+document.getElementById("close-lightbox").addEventListener(
+  "click",
+  closeLightbox
+);
+
+document.getElementById("lightbox").addEventListener(
+  "click",
+  event => {
+    if (event.target.id === "lightbox") closeLightbox();
+  }
+);
+
+document.addEventListener("keydown",event => {
+  if (event.key === "Escape") closeLightbox();
+});
+
+/* =====================================================
+   INITIALISE
+===================================================== */
+
+loadProgress();
+renderGrid();
+
+</script>
+</body>
+</html>
