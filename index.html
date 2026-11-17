@@ -785,7 +785,7 @@ button:focus-visible, input:focus-visible {
     </div>
 
     <div class="progress-label" id="progress-label">
-      1 of 21 letters unlocked
+      0 of 21 letters unlocked
     </div>
   </header>
 
@@ -1261,34 +1261,16 @@ const questions = [
    STATE AND PROGRESS
 ===================================================== */
 
-const STORAGE_KEY = "birthday_scrapbook_progress_v4";
-
+// Progress is intentionally session-only. Every fresh page opening starts
+// at zero, so an old completed run cannot leave the progress bar full.
 let currentLetter = 0;
 let unlockedLetters = 0;
 let currentQuestion = 0;
 let questionPassed = false;
 let openingInProgress = false;
 
-function loadProgress() {
-  try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-
-    if (saved) {
-      unlockedLetters = Math.max(
-        0,
-        Math.min(21, saved.unlockedLetters || 0)
-      );
-    }
-  } catch (error) {
-    console.warn("Could not load progress.", error);
-  }
-}
-
 function saveProgress() {
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify({unlockedLetters})
-  );
+  // Keep progress in memory for this visit only.
 }
 
 function updateProgress() {
@@ -1617,13 +1599,6 @@ function showFinalPage() {
     block:"start"
   });
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify({
-      unlockedLetters:21,
-      completed:true
-    })
-  );
 }
 
 /* =====================================================
@@ -1679,7 +1654,8 @@ document.addEventListener("keydown",event => {
    INITIALISE
 ===================================================== */
 
-loadProgress();
+unlockedLetters = 0;
+updateProgress();
 renderGrid();
 
 </script>
